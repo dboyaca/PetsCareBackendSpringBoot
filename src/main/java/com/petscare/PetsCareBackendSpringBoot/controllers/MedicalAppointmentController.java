@@ -26,7 +26,7 @@ public class MedicalAppointmentController {
         return this.medicalAppointmentService.getMedicalAppointmentById(medicalAppointmentId);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/medicalAppointment/deleteById/{medicalAppointmentId}")
     public void deleteMedicalAppointmentById(Integer medicalAppointmentId){
         this.medicalAppointmentService.deleteMedicalAppointmentById(medicalAppointmentId);
     }

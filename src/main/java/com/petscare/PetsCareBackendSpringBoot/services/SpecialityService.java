@@ -4,6 +4,9 @@ import com.petscare.PetsCareBackendSpringBoot.repositories.SpecialityRepository;
 import com.petscare.PetsCareBackendSpringBoot.models.Speciality;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +28,10 @@ public class SpecialityService {
             return null;
         }
         return optionalValue.get();
+    }
+
+    public List<Speciality> allSpecialities(){
+        return this.specialityRepository.findAll();
     }
 
     public Speciality updateSpeciality(Speciality speciality){

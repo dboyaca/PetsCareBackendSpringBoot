@@ -22,7 +22,7 @@ public class Patient {
     @Column(name="raza_paciente", length=100)
     private String breed;
 
-    @Column(name="edad")
+    @Column(name="edad_paciente")
     private Integer age;
 
     @Column (name="peso_paciente")

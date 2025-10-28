@@ -5,6 +5,8 @@ import com.petscare.PetsCareBackendSpringBoot.services.SpecialityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class SpecialityController {
 
@@ -18,6 +20,11 @@ public class SpecialityController {
     @PostMapping("/speciality/add")
     public Speciality addSpeciality(@RequestBody Speciality speciality){
         return this.specialityService.addSpeciality(speciality);
+    }
+
+    @GetMapping("/speciality/all")
+    public List<Speciality> allSpecialities(){
+        return this.specialityService.allSpecialities();
     }
 
     @GetMapping("/specialityById/{sId}")
@@ -37,5 +44,4 @@ public class SpecialityController {
     public void deleteSpeciality(@PathVariable Integer specialityId){
         this.specialityService.deleteSpecialityById(specialityId);
     }
-
 }

@@ -20,6 +20,7 @@ public class MedicalAppointmentService {
         return this.medicalAppointmentRepository.save(medicalAppointment);
     }
 
+
     public MedicalAppointment getMedicalAppointmentById(Integer medicalAppointmentId){
         Optional<MedicalAppointment> optionalValue = this.medicalAppointmentRepository.findById(medicalAppointmentId);
         if(optionalValue.isEmpty()){

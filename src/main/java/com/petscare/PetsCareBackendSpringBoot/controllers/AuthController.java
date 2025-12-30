@@ -38,7 +38,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> register(@RequestBody Users user) {
         try {
-            // Pass the model directly to the service
+            // Pass the model directly to the serviceYes
             Users createdUser = authService.signUp(user);
             return ResponseEntity.ok(createdUser);
 

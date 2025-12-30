@@ -3,6 +3,12 @@ package com.petscare.PetsCareBackendSpringBoot.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+/***
+ * This library guarantees that it does not exists duplicates in the table
+ */
+import java.util.Set;
+
+
 @Entity
 @Table(name="especialidad")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -22,6 +28,9 @@ public class Speciality {
 
     @OneToOne(mappedBy = "speciality", cascade = CascadeType.ALL, fetch= FetchType.LAZY)
     private MedicalAppointment medicalAppointment;
+
+    @ManyToMany(mappedBy = "specialities",fetch= FetchType.LAZY)
+    private Set<Employee> employees;
 
     public Speciality(String name, Float charge_per_hour){
         this.name = name;

@@ -38,6 +38,9 @@ public class Users {
     @Column(name="logueado")
     private Byte online;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Employee employee;
+
     public Users(String firstName, String secondName, String firstLastName, String secondLastName, LocalDateTime signUpDate, LocalDateTime lastConnection, Byte online){
         this.firstName = firstName;
         this.secondName = secondName;

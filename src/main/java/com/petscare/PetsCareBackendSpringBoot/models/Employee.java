@@ -5,9 +5,15 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import java.util.Set;
+import java.util.HashSet;
+
+
 @Entity
 @Table(name="empleado")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
+
 
 public class Employee {
 
@@ -20,7 +26,7 @@ public class Employee {
     private Integer idEmployee;
 
     @OneToOne
-    @MapsId                     //use the same value that users.id
+    @MapsId                     //use the same value that users.id. This is the linkage
     @JoinColumn(name="id_empleado")
     private Users user;
 
@@ -30,9 +36,31 @@ public class Employee {
     @Column(name="salario")
     private Float salary;
 
+    /***
+     * The following commands relates the creation of the many to many relationship belonging to
+     * the Employee and speciality service.
+     * By this mean, the employee carries information about its speciality in this model
+     */
+    @ManyToMany(fetch = FetchType.LAZY) //
+    @JoinTable(
+            name = "especialidadempleado",
+            joinColumns = @JoinColumn(name = "id_empleado"),
+            inverseJoinColumns = @JoinColumn(name = "id_especialidad") // <-- 2. Fixed typo
+    )
+    private Set<Speciality> specialities = new HashSet<>();
+
+    public Set<Speciality> getSpecialities() {
+        return specialities;
+    }
+
+    public void setSpecialities(Set<Speciality> specialities) {
+        this.specialities = specialities;
+    }
+
     public Employee() {}
 
-    public Employee(LocalDateTime startDate, Float salary){
+    public Employee(Users user, LocalDateTime startDate, Float salary){
+        this.user     = user;
         this.startDate = startDate;
         this.salary = salary;
     }
@@ -54,7 +82,7 @@ public class Employee {
         this.startDate = startDate;
     }
 
-    public float getSalary() {
+    public Float getSalary() {
         return salary;
     }
 

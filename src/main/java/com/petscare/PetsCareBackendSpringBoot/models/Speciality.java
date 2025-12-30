@@ -16,7 +16,7 @@ import java.util.Set;
 public class Speciality {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_especialidad")
     private Integer id_speciality;
 

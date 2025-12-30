@@ -42,9 +42,9 @@ public class EmployeeController {
 
     @DeleteMapping("/removeSpeciality/{empId}/{specId}")
     public Employee removeSpeciality(@PathVariable Integer empId, @PathVariable Integer specId){
-        Employee updatedEmployee = employeeService.removeSpecialityFromEmployee(empId, specId);
+        Employee removedEmployee = employeeService.removeSpecialityFromEmployee(empId, specId);
 
-        return updatedEmployee;
+        return removedEmployee;
     }
 
 

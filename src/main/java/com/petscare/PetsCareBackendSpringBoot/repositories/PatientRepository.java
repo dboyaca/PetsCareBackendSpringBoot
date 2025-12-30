@@ -1,4 +1,7 @@
 package com.petscare.PetsCareBackendSpringBoot.repositories;
 
-public interface PatientRepository {
+import com.petscare.PetsCareBackendSpringBoot.models.Patient;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PatientRepository extends JpaRepository<Patient, Integer> {
 }

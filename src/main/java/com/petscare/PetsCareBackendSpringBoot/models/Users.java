@@ -7,6 +7,9 @@ import java.time.LocalDateTime;
 //We decided tu put users in order to avoid any confusion with the User reserved word for DBMS
 //This has a one to one relationship with the Employee class
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="usuario")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -61,6 +64,24 @@ public class Users {
 
 
     public Users() {}
+
+    @ManyToMany(fetch = FetchType.LAZY) // Lazy = Don't load pets unless I ask for them
+    @JoinTable(
+            name = "responsablepaciente",               // The DB table connecting them
+            joinColumns = @JoinColumn(name = "id_responsable"), // Column for User ID
+            inverseJoinColumns = @JoinColumn(name = "id_paciente") // Column for Patient ID
+    )
+    private Set<Patient> patients = new HashSet<>();
+    // -----------------------------
+
+    // Add the Getter and Setter for this new list
+    public Set<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(Set<Patient> patients) {
+        this.patients = patients;
+    }
 
     public String getEmail() {
         return email;

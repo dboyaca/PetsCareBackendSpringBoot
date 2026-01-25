@@ -103,6 +103,8 @@ public class Users {
         return userId;
     }
 
+    public void setUserId(Integer id){ this.userId = id; }
+
     public String getFirstName() {
         return firstName;
     }

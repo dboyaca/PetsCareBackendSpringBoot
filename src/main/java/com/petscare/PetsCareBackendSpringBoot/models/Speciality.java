@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 /***
  * This library guarantees that it does not exists duplicates in the table
  */
+import java.util.List;
 import java.util.Set;
 
 
@@ -26,8 +27,8 @@ public class Speciality {
     @Column(name="costo_hora")
     private Float charge_per_hour;
 
-    @OneToOne(mappedBy = "speciality", cascade = CascadeType.ALL, fetch= FetchType.LAZY)
-    private MedicalAppointment medicalAppointment;
+    @OneToMany(mappedBy = "speciality")
+    private List<MedicalAppointment> medicalAppointments;
 
     @ManyToMany(mappedBy = "specialities",fetch= FetchType.LAZY)
     private Set<Employee> employees;
@@ -38,6 +39,10 @@ public class Speciality {
     }
 
     public Speciality() {}
+
+    public void setId_speciality(Integer id){
+        this.id_speciality = id;
+    }
 
     public Integer getId_speciality() {
         return id_speciality;

@@ -45,8 +45,9 @@ public class Employee {
     @JoinTable(
             name = "especialidadempleado",
             joinColumns = @JoinColumn(name = "id_empleado"),
-            inverseJoinColumns = @JoinColumn(name = "id_especialidad") // <-- 2. Fixed typo
+            inverseJoinColumns = @JoinColumn(name = "id_especialidad")
     )
+
     private Set<Speciality> specialities = new HashSet<>();
 
     public Set<Speciality> getSpecialities() {
@@ -68,6 +69,10 @@ public class Employee {
 
     public Users getUser() {
         return user;
+    }
+
+    public void setId_Employee(Integer id){
+        this.user.setUserId(id);
     }
 
     public void setUser(Users user) {

@@ -12,20 +12,20 @@ import java.time.LocalDateTime;
 public class MedicalAppointment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_consulta")
     private Integer id_appointment;
 
     // This is the many side. One patient may have zero or many medical appointment.
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name="id_paciente")
     private Patient patient;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id_especialidad")
     private Speciality speciality;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id_especialista")
     private Employee employee;
 

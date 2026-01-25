@@ -46,6 +46,10 @@ public class Patient {
         return id_patient;
     }
 
+    public void setId_patient(Integer id){
+        this.id_patient = id;
+    }
+
     public String getName() {
         return name;
     }

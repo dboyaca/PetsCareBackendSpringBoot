@@ -57,11 +57,11 @@ public class UserService {
         // We update the user with the information we just stored
         return usersRepository.save(user);
 
-
-
-
     }
 
+    public Users findById(Integer userId) {
+        return usersRepository.findById(userId).orElse(null);
+    }
 
 
 

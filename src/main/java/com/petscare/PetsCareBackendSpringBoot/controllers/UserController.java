@@ -6,10 +6,7 @@ import com.petscare.PetsCareBackendSpringBoot.models.Users;
 import com.petscare.PetsCareBackendSpringBoot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /*
 UserController will allow us to perform operations such as:
@@ -31,6 +28,19 @@ public class UserController {
     public Users addPatientToUser(@PathVariable(name="idUser") Integer idUser, @RequestBody Patient newPatient){
         Users updatedUser = userService.createPatientForUser(idUser, newPatient);
         return updatedUser;
+    }
 
+    @GetMapping("/userPatients/{id}")
+    public ResponseEntity<?> getUserPatients(@PathVariable Integer id) {
+        // 1. Get the User
+        Users user = userService.findById(id); // (Assumes you have a findById in UserService)
+
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        // 2. Return ONLY the list of patients
+        // This is lighter than returning the whole User object
+        return ResponseEntity.ok(user.getPatients());
     }
 }

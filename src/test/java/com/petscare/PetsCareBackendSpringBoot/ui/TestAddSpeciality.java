@@ -28,10 +28,10 @@ public class TestAddSpeciality {
             btnManagePatients.click();
 
             WebElement specialityNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("name")));
-            specialityNameField.sendKeys("Odontologia Animal");
+            specialityNameField.sendKeys("Oncología Animal");
 
             WebElement chargeField = driver.findElement(By.name("charge_per_hour"));
-            chargeField.sendKeys("90000");
+            chargeField.sendKeys("190000");
 
             WebElement btnCreateSpeciality = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Create Speciality')]")));
             btnCreateSpeciality.click();

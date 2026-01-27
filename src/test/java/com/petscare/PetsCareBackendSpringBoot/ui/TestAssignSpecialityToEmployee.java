@@ -10,8 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class TestUpdateSpeciality {
-
+public class TestAssignSpecialityToEmployee {
     public static void main(String[] args) {
 
         WebDriver driver = new ChromeDriver();
@@ -33,39 +32,33 @@ public class TestUpdateSpeciality {
             btnManageSpecialities.click();
 
 
-            //------- SELECTING THE UPDATE/DELETE TAB -------
-            WebElement tabEditSpeciality = wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("//button[contains(., 'Update / Delete')]")
+            //------- SELECTING THE ASSIGN TAB -------
+            WebElement tabAssignSpeciality = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[contains(., 'Assign')]")
             ));
-            tabEditSpeciality.click();
+            tabAssignSpeciality.click();
+
+            WebElement employeeIdField = driver.findElement(By.name("empId"));
+            employeeIdField.sendKeys("5");
 
             //------ SELECTING THE SPECIALITY TO UPDATE/DELETE FROM THE COMBOBOX-------
             WebElement comboTrigger = wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("//label[text()='Select Speciality to Edit']/following-sibling::div")
+                    By.xpath("//label[text()='Speciality']/following-sibling::div")
             ));
             comboTrigger.click();
 
-            String especialidadASeleccionar = "Veterinaria General (ID: 101)";
+            String especialidadASeleccionar = "Veterinaria General";
 
             WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("//li[@role='option'][contains(., '" + especialidadASeleccionar + "')]")));
             option.click();
 
-            //--------- UPDATING THE NAME AND THE CHARGE PER HOUR OF THE SPECIALITY-------------//
-            WebElement specialityNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("name")));
-            specialityNameField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-            specialityNameField.sendKeys(Keys.DELETE);
-            specialityNameField.sendKeys("Veterinaria General"); //without ''tilde''
 
-            WebElement chargeField = driver.findElement(By.name("charge_per_hour"));
-            chargeField.sendKeys(Keys.chord(Keys.CONTROL,"a"));
-            chargeField.sendKeys(Keys.DELETE);
-            chargeField.sendKeys("75000");
 
-            WebElement btnSaveChanges = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Save Changes')]")));
+            WebElement btnSaveChanges = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Confirm Assignment')]")));
             btnSaveChanges.click();
 
-            System.out.println("PRUEBA EXITOSA: Especialidad veterinaria actualizada exitosamente");
+            System.out.println("PRUEBA EXITOSA: Se le asignó al empleado la especialidad respectiva");
 
 
         } catch (Exception e) {
@@ -74,4 +67,7 @@ public class TestUpdateSpeciality {
             //driver.quit();
         }
     }
+
+
+
 }

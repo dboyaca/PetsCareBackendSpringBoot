@@ -19,6 +19,7 @@ public class TestAddRecordMH {
         try {
             driver.get("http://localhost:5173/login");
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
             WebElement userField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
             userField.sendKeys("dboyacap@gmail.com");
             WebElement pwField = driver.findElement(By.name("password"));

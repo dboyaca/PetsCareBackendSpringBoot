@@ -47,7 +47,7 @@ public class TestLoginReact {
             System.out.println("ERROR: Algo falló. Revisa los selectores.");
             e.printStackTrace();
         } finally {
-            driver.quit();
+            //driver.quit();
         }
     }
 }

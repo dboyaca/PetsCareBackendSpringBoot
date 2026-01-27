@@ -31,7 +31,7 @@ public class TestAddPet {
             btnManagePatients.click();
 
             WebElement nameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("name")));
-            nameField.sendKeys("Yocko");
+            nameField.sendKeys("Ludwig");
 
             WebElement speciesField = driver.findElement(By.name("species"));
             speciesField.sendKeys("Dog");
@@ -40,10 +40,10 @@ public class TestAddPet {
             breedField.sendKeys("Bulldog");
 
             WebElement ageField = driver.findElement(By.name("age"));
-            ageField.sendKeys("1");
+            ageField.sendKeys("3");
 
             WebElement weightField = driver.findElement(By.name("weight"));
-            weightField.sendKeys("15.4");
+            weightField.sendKeys("12.4");
 
             WebElement additionalInfoField = driver.findElement(By.name("additional_info"));
             additionalInfoField.sendKeys("No additional information");
